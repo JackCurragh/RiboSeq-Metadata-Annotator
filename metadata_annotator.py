@@ -8,22 +8,6 @@ import argparse
 import openai
 from Bio import Entrez
 
-# from lxml import etree
-# from lxml import objectify
-# from lxml.etree import XMLSyntaxError
-# from lxml.etree import XMLParser
-# from lxml.etree import XMLSchema
-# from lxml.etree import XPath
-# from lxml.etree import XPathSyntaxError
-# from lxml.etree import XPathEvalError
-# from lxml.etree import XSLT
-# from lxml.etree import Element
-
-# from io import StringIO
-# from io import BytesIO
-
-# import os
-# import sys
 
 def assign_openai_key(path_to_api_key):
     '''
@@ -73,6 +57,16 @@ def main(args):
     metadata_prompt += "Pubmed ID: "
     metadata_prompt += "Publication Date: "
     metadata_prompt += "Organism: "
+    metadata_prompt += "For each sample specify the following: "
+    metadata_prompt += "Sample Type: "
+    metadata_prompt += "Cell Type: "
+    metadata_prompt += "Cell Line: "
+    metadata_prompt += "Tissue: "
+    metadata_prompt += "Disease: "
+    metadata_prompt += "Treatment: "
+    metadata_prompt += "Age: "
+    metadata_prompt += "Output in YAML format"
+
 
     response = openai.Completion.create(
         prompt=metadata_prompt,
